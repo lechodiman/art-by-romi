@@ -13,7 +13,7 @@ import styles from './tailwind.css';
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
 export const meta: MetaFunction = () => {
-  return { title: 'New Remix App' };
+  return { title: 'Art By Romi' };
 };
 
 export default function App() {

@@ -16,21 +16,22 @@ import tomi from '~/images/tomi.jpg';
 
 const navigation = {
   pages: [
-    { name: 'Inicio', href: '#' },
-    { name: 'Testimonios', href: '#' },
-    { name: 'Portfolio', href: '#' },
-    { name: 'Contáctame', href: '#' },
+    { name: 'Inicio', href: '/' },
+    { name: 'Testimonios', href: '/testimonios' },
+    { name: 'Galería', href: '/portafolio' },
+    { name: '¿Cómo hago un encargo?', href: '/instrucciones' },
+    { name: 'Contáctame', href: '/contáctame' },
   ],
 };
 
 const favorites = [
   {
     id: 1,
-    name: 'Black Basic Tee',
-    price: '$32',
+    name: 'Domi',
+    price: 'Perrita puddle muy cariñosa',
     href: '#',
     imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-01.jpg',
-    imageAlt: "Model wearing women's black cotton crewneck tee.",
+    imageAlt: 'Domi',
   },
   {
     id: 2,
@@ -59,22 +60,7 @@ const footerNavigation = {
     { name: 'Home Goods', href: '#' },
     { name: 'Accessories', href: '#' },
   ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    { name: 'Privacy', href: '#' },
-  ],
-  account: [
-    { name: 'Manage Account', href: '#' },
-    { name: 'Returns & Exchanges', href: '#' },
-    { name: 'Redeem a Gift Card', href: '#' },
-  ],
   connect: [
-    { name: 'Contact Us', href: '#' },
-    { name: 'Twitter', href: '#' },
     { name: 'Instagram', href: '#' },
     { name: 'Pinterest', href: '#' },
   ],
@@ -87,7 +73,7 @@ export default function Index() {
     <div className='bg-white'>
       {/* Mobile menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as='div' className='fixed inset-0 flex z-40 lg:hidden' onClose={setOpen}>
+        <Dialog as='div' className='fixed inset-0 z-40 flex lg:hidden' onClose={setOpen}>
           <Transition.Child
             as={Fragment}
             enter='transition-opacity ease-linear duration-300'
@@ -109,42 +95,29 @@ export default function Index() {
             leaveFrom='translate-x-0'
             leaveTo='-translate-x-full'
           >
-            <div className='relative max-w-xs w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto'>
-              <div className='px-4 pt-5 pb-2 flex'>
+            <div className='relative flex flex-col w-full max-w-xs pb-12 overflow-y-auto bg-white shadow-xl'>
+              <div className='flex px-4 pt-5 pb-2'>
                 <button
                   type='button'
-                  className='-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400'
+                  className='inline-flex items-center justify-center p-2 -m-2 text-gray-400 rounded-md'
                   onClick={() => setOpen(false)}
                 >
-                  <span className='sr-only'>Close menu</span>
-                  <XIcon className='h-6 w-6' aria-hidden='true' />
+                  <span className='sr-only'>Cerrar menú</span>
+                  <XIcon className='w-6 h-6' aria-hidden='true' />
                 </button>
               </div>
 
-              <div className='border-t border-gray-200 py-6 px-4 space-y-6'>
+              <div className='px-4 py-6 space-y-6 border-t border-gray-200'>
                 {navigation.pages.map((page) => (
                   <div key={page.name} className='flow-root'>
                     <a
                       href={page.href}
-                      className='-m-2 p-2 block font-medium text-gray-900'
+                      className='block p-2 -m-2 font-medium text-gray-900'
                     >
                       {page.name}
                     </a>
                   </div>
                 ))}
-              </div>
-
-              <div className='border-t border-gray-200 py-6 px-4 space-y-6'>
-                <div className='flow-root'>
-                  <a href='#' className='-m-2 p-2 block font-medium text-gray-900'>
-                    Sign in
-                  </a>
-                </div>
-                <div className='flow-root'>
-                  <a href='#' className='-m-2 p-2 block font-medium text-gray-900'>
-                    Create account
-                  </a>
-                </div>
               </div>
             </div>
           </Transition.Child>
@@ -157,23 +130,23 @@ export default function Index() {
           aria-label='Top'
           className='relative z-20 bg-white bg-opacity-90 backdrop-filter backdrop-blur-xl'
         >
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='h-16 flex items-center'>
+          <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
+            <div className='flex items-center h-16'>
               <button
                 type='button'
-                className='bg-white p-2 rounded-md text-gray-400 lg:hidden'
+                className='p-2 text-gray-400 bg-white rounded-md lg:hidden'
                 onClick={() => setOpen(true)}
               >
                 <span className='sr-only'>Open menu</span>
-                <MenuIcon className='h-6 w-6' aria-hidden='true' />
+                <MenuIcon className='w-6 h-6' aria-hidden='true' />
               </button>
 
               {/* Logo */}
-              <div className='ml-4 flex lg:ml-0'>
+              <div className='flex ml-4 lg:ml-0'>
                 <a href='#'>
                   <span className='sr-only'>Workflow</span>
                   <img
-                    className='h-8 w-auto'
+                    className='w-auto h-8'
                     src='https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600'
                     alt=''
                   />
@@ -182,7 +155,7 @@ export default function Index() {
 
               {/* Flyout menus */}
               <Popover.Group className='hidden lg:ml-8 lg:block lg:self-stretch'>
-                <div className='h-full flex space-x-8'>
+                <div className='flex h-full space-x-8'>
                   {navigation.pages.map((page) => (
                     <a
                       key={page.name}
@@ -200,14 +173,13 @@ export default function Index() {
 
         {/* Hero section */}
         <div className='pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48'>
-          <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:static'>
+          <div className='relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 sm:static'>
             <div className='sm:max-w-lg'>
-              <h1 className='text-4xl font font-extrabold tracking-tight text-gray-900 sm:text-6xl'>
-                Retrato a tu mascota!
+              <h1 className='text-4xl font-extrabold tracking-tight text-gray-900 font sm:text-6xl'>
+                Retratos de mascotas personalizados
               </h1>
               <p className='mt-4 text-xl text-gray-500'>
-                Hago retratos personalizados de perros, gatos, animales salvajes y de
-                granja.
+                Pinto detalladamente a tu mascota en acrílico
               </p>
             </div>
             <div>
@@ -219,58 +191,58 @@ export default function Index() {
                 >
                   <div className='absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8'>
                     <div className='flex items-center space-x-6 lg:space-x-8'>
-                      <div className='flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8'>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden sm:opacity-0 lg:opacity-100'>
+                      <div className='grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44 sm:opacity-0 lg:opacity-100'>
                           <img
                             src={ruffo}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={domi}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
                       </div>
-                      <div className='flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8'>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                      <div className='grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={pia}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={tomi}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={thor}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
                       </div>
-                      <div className='flex-shrink-0 grid grid-cols-1 gap-y-6 lg:gap-y-8'>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                      <div className='grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={bruno}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
-                        <div className='w-44 h-64 rounded-lg overflow-hidden'>
+                        <div className='h-64 overflow-hidden rounded-lg w-44'>
                           <img
                             src={luna}
                             alt=''
-                            className='w-full h-full object-center object-cover'
+                            className='object-cover object-center w-full h-full'
                           />
                         </div>
                       </div>
@@ -279,10 +251,10 @@ export default function Index() {
                 </div>
 
                 <a
-                  href='#'
-                  className='inline-block text-center bg-indigo-600 border border-transparent rounded-md py-3 px-8 font-medium text-white hover:bg-indigo-700'
+                  href='/instrucciones'
+                  className='inline-block px-8 py-3 font-medium text-center text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700'
                 >
-                  Retrata a tu mascota
+                  ¡Dime cómo!
                 </a>
               </div>
             </div>
@@ -293,58 +265,45 @@ export default function Index() {
       <main>
         {/* Category section */}
         <section aria-labelledby='category-heading' className='bg-gray-50'>
-          <div className='max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8'>
+          <div className='px-4 py-24 mx-auto max-w-7xl sm:py-32 sm:px-6 lg:px-8'>
             <div className='sm:flex sm:items-baseline sm:justify-between'>
               <h2
                 id='category-heading'
                 className='text-2xl font-extrabold tracking-tight text-gray-900'
               >
-                Shop by Category
+                Explora por categorías
               </h2>
               <a
-                href='#'
+                href='/portafolio'
                 className='hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block'
               >
-                Browse all categories<span aria-hidden='true'> &rarr;</span>
+                Ver todo<span aria-hidden='true'> &rarr;</span>
               </a>
             </div>
 
-            <div className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8'>
-              <div className='group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2'>
+            <div className='grid grid-cols-1 mt-6 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8'>
+              <div className='overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2'>
                 <img
                   src='https://tailwindui.com/img/ecommerce-images/home-page-03-featured-category.jpg'
                   alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
-                  className='object-center object-cover group-hover:opacity-75'
+                  className='object-cover object-center group-hover:opacity-75'
                 />
                 <div
                   aria-hidden='true'
-                  className='bg-gradient-to-b from-transparent to-black opacity-50'
+                  className='opacity-50 bg-gradient-to-b from-transparent to-black'
                 />
-                <div className='p-6 flex items-end'>
-                  <div>
-                    <h3 className='font-semibold text-white'>
-                      <a href='#'>
-                        <span className='absolute inset-0' />
-                        New Arrivals
-                      </a>
-                    </h3>
-                    <p aria-hidden='true' className='mt-1 text-sm text-white'>
-                      Shop now
-                    </p>
-                  </div>
-                </div>
               </div>
-              <div className='group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full'>
+              <div className='overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:relative sm:aspect-none sm:h-full'>
                 <img
                   src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg'
                   alt='Wooden shelf with gray and olive drab green baseball caps, next to wooden clothes hanger with sweaters.'
-                  className='object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full'
+                  className='object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full'
                 />
                 <div
                   aria-hidden='true'
-                  className='bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0'
+                  className='opacity-50 bg-gradient-to-b from-transparent to-black sm:absolute sm:inset-0'
                 />
-                <div className='p-6 flex items-end sm:absolute sm:inset-0'>
+                <div className='flex items-end p-6 sm:absolute sm:inset-0'>
                   <div>
                     <h3 className='font-semibold text-white'>
                       <a href='#'>
@@ -358,17 +317,17 @@ export default function Index() {
                   </div>
                 </div>
               </div>
-              <div className='group aspect-w-2 aspect-h-1 rounded-lg overflow-hidden sm:relative sm:aspect-none sm:h-full'>
+              <div className='overflow-hidden rounded-lg group aspect-w-2 aspect-h-1 sm:relative sm:aspect-none sm:h-full'>
                 <img
                   src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg'
                   alt='Walnut desk organizer set with white modular trays, next to porcelain mug on wooden desk.'
-                  className='object-center object-cover group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full'
+                  className='object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:w-full sm:h-full'
                 />
                 <div
                   aria-hidden='true'
-                  className='bg-gradient-to-b from-transparent to-black opacity-50 sm:absolute sm:inset-0'
+                  className='opacity-50 bg-gradient-to-b from-transparent to-black sm:absolute sm:inset-0'
                 />
-                <div className='p-6 flex items-end sm:absolute sm:inset-0'>
+                <div className='flex items-end p-6 sm:absolute sm:inset-0'>
                   <div>
                     <h3 className='font-semibold text-white'>
                       <a href='#'>
@@ -397,19 +356,19 @@ export default function Index() {
 
         {/* Featured section */}
         <section aria-labelledby='cause-heading'>
-          <div className='relative bg-gray-800 py-32 px-6 sm:py-40 sm:px-12 lg:px-16'>
+          <div className='relative px-6 py-32 bg-gray-800 sm:py-40 sm:px-12 lg:px-16'>
             <div className='absolute inset-0 overflow-hidden'>
               <img
                 src='https://tailwindui.com/img/ecommerce-images/home-page-03-feature-section-full-width.jpg'
                 alt=''
-                className='w-full h-full object-center object-cover'
+                className='object-cover object-center w-full h-full'
               />
             </div>
             <div
               aria-hidden='true'
               className='absolute inset-0 bg-gray-900 bg-opacity-50'
             />
-            <div className='relative max-w-3xl mx-auto flex flex-col items-center text-center'>
+            <div className='relative flex flex-col items-center max-w-3xl mx-auto text-center'>
               <h2
                 id='cause-heading'
                 className='text-3xl font-extrabold tracking-tight text-white sm:text-4xl'
@@ -424,7 +383,7 @@ export default function Index() {
               </p>
               <a
                 href='#'
-                className='mt-8 w-full block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto'
+                className='block w-full px-8 py-3 mt-8 text-base font-medium text-gray-900 bg-white border border-transparent rounded-md hover:bg-gray-100 sm:w-auto'
               >
                 Read our story
               </a>
@@ -434,30 +393,24 @@ export default function Index() {
 
         {/* Favorites section */}
         <section aria-labelledby='favorites-heading'>
-          <div className='max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8'>
+          <div className='px-4 py-24 mx-auto max-w-7xl sm:py-32 sm:px-6 lg:px-8'>
             <div className='sm:flex sm:items-baseline sm:justify-between'>
               <h2
                 id='favorites-heading'
                 className='text-2xl font-extrabold tracking-tight text-gray-900'
               >
-                Our Favorites
+                Mis favoritos
               </h2>
-              <a
-                href='#'
-                className='hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block'
-              >
-                Browse all favorites<span aria-hidden='true'> &rarr;</span>
-              </a>
             </div>
 
-            <div className='mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 lg:gap-x-8'>
+            <div className='grid grid-cols-1 mt-6 gap-y-10 sm:grid-cols-3 sm:gap-y-0 sm:gap-x-6 lg:gap-x-8'>
               {favorites.map((favorite) => (
-                <div key={favorite.id} className='group relative'>
-                  <div className='w-full h-96 rounded-lg overflow-hidden group-hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3'>
+                <div key={favorite.id} className='relative group'>
+                  <div className='w-full overflow-hidden rounded-lg h-96 group-hover:opacity-75 sm:h-auto sm:aspect-w-2 sm:aspect-h-3'>
                     <img
                       src={favorite.imageSrc}
                       alt={favorite.imageAlt}
-                      className='w-full h-full object-center object-cover'
+                      className='object-cover object-center w-full h-full'
                     />
                   </div>
                   <h3 className='mt-4 text-base font-semibold text-gray-900'>
@@ -486,7 +439,7 @@ export default function Index() {
         <section aria-labelledby='sale-heading'>
           <div className='pt-32 overflow-hidden sm:pt-14'>
             <div className='bg-gray-800'>
-              <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+              <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
                 <div className='relative pt-48 pb-16 sm:pb-24'>
                   <div>
                     <h2
@@ -504,20 +457,20 @@ export default function Index() {
                     </div>
                   </div>
 
-                  <div className='absolute -top-32 left-1/2 transform -translate-x-1/2 sm:top-6 sm:translate-x-0'>
-                    <div className='ml-24 flex space-x-6 min-w-max sm:ml-3 lg:space-x-8'>
+                  <div className='absolute transform -translate-x-1/2 -top-32 left-1/2 sm:top-6 sm:translate-x-0'>
+                    <div className='flex ml-24 space-x-6 min-w-max sm:ml-3 lg:space-x-8'>
                       <div className='flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8'>
                         <div className='flex-shrink-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg'
                             alt=''
                           />
                         </div>
 
-                        <div className='mt-6 flex-shrink-0 sm:mt-0'>
+                        <div className='flex-shrink-0 mt-6 sm:mt-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg'
                             alt=''
                           />
@@ -526,15 +479,15 @@ export default function Index() {
                       <div className='flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8'>
                         <div className='flex-shrink-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-01.jpg'
                             alt=''
                           />
                         </div>
 
-                        <div className='mt-6 flex-shrink-0 sm:mt-0'>
+                        <div className='flex-shrink-0 mt-6 sm:mt-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-favorite-02.jpg'
                             alt=''
                           />
@@ -543,15 +496,15 @@ export default function Index() {
                       <div className='flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8'>
                         <div className='flex-shrink-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg'
                             alt=''
                           />
                         </div>
 
-                        <div className='mt-6 flex-shrink-0 sm:mt-0'>
+                        <div className='flex-shrink-0 mt-6 sm:mt-0'>
                           <img
-                            className='h-64 w-64 rounded-lg object-cover md:h-72 md:w-72'
+                            className='object-cover w-64 h-64 rounded-lg md:h-72 md:w-72'
                             src='https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg'
                             alt=''
                           />
@@ -568,52 +521,14 @@ export default function Index() {
 
       <footer aria-labelledby='footer-heading' className='bg-white'>
         <h2 id='footer-heading' className='sr-only'>
-          Footer
+          Pie de página
         </h2>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='px-4 mx-auto max-w-7xl sm:px-6 lg:px-8'>
           <div className='py-20 xl:grid xl:grid-cols-3 xl:gap-8'>
             <div className='grid grid-cols-2 gap-8 xl:col-span-2'>
               <div className='space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-8'>
                 <div>
-                  <h3 className='text-sm font-medium text-gray-900'>Shop</h3>
-                  <ul role='list' className='mt-6 space-y-6'>
-                    {footerNavigation.shop.map((item) => (
-                      <li key={item.name} className='text-sm'>
-                        <a href={item.href} className='text-gray-500 hover:text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className='text-sm font-medium text-gray-900'>Company</h3>
-                  <ul role='list' className='mt-6 space-y-6'>
-                    {footerNavigation.company.map((item) => (
-                      <li key={item.name} className='text-sm'>
-                        <a href={item.href} className='text-gray-500 hover:text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <div className='space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-8'>
-                <div>
-                  <h3 className='text-sm font-medium text-gray-900'>Account</h3>
-                  <ul role='list' className='mt-6 space-y-6'>
-                    {footerNavigation.account.map((item) => (
-                      <li key={item.name} className='text-sm'>
-                        <a href={item.href} className='text-gray-500 hover:text-gray-600'>
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h3 className='text-sm font-medium text-gray-900'>Connect</h3>
+                  <h3 className='text-sm font-medium text-gray-900'>Conectemos</h3>
                   <ul role='list' className='mt-6 space-y-6'>
                     {footerNavigation.connect.map((item) => (
                       <li key={item.name} className='text-sm'>
@@ -626,40 +541,10 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <div className='mt-16 md:mt-16 xl:mt-0'>
-              <h3 className='text-sm font-medium text-gray-900'>
-                Sign up for our newsletter
-              </h3>
-              <p className='mt-6 text-sm text-gray-500'>
-                The latest deals and savings, sent to your inbox weekly.
-              </p>
-              <form className='mt-2 flex sm:max-w-md'>
-                <label htmlFor='email-address' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  id='email-address'
-                  type='text'
-                  autoComplete='email'
-                  required
-                  className='appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-indigo-500 placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500'
-                />
-                <div className='ml-4 flex-shrink-0'>
-                  <button
-                    type='submit'
-                    className='w-full bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-                  >
-                    Sign up
-                  </button>
-                </div>
-              </form>
-            </div>
           </div>
 
-          <div className='border-t border-gray-200 py-10'>
-            <p className='text-sm text-gray-500'>
-              Copyright &copy; 2021 Clothing Company Inc.
-            </p>
+          <div className='py-10 border-t border-gray-200'>
+            <p className='text-sm text-gray-500'>Copyright &copy; 2022 Art By Romi</p>
           </div>
         </div>
       </footer>
